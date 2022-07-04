@@ -53,7 +53,7 @@ class App extends React.Component {
               good={good}
               bad={bad}
               neutral={neutral}
-              total={this.countTotalFeedback}
+              total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage}
             />
           ) : (

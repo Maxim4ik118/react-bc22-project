@@ -5,7 +5,7 @@ function Statistics({
   good = 0,
   neutral = 0,
   bad = 0,
-  total,
+  total = 0,
   positivePercentage,
 }) {
   return (
@@ -25,7 +25,7 @@ function Statistics({
         </li>
         <li>
           <span className="feedback-title">Total</span>
-          <span className="value">{total() ?? 0}</span>
+          <span className="value">{total}</span>
         </li>
         <li>
           <span className="feedback-title">Positive feedback</span>
@@ -40,7 +40,7 @@ Statistics.propTypes = {
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
-  total: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.func.isRequired,
 };
 
