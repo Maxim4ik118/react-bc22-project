@@ -1,9 +1,10 @@
-import s from './Paper.module.css';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
+import s from './Paper.module.css';
 
 function Paper({ children, className, ...restProps }) {
   return (
-    <div className={`${s.paper} ${className}}`} {...restProps}>
+    <div className={cn(s.paper, className)} {...restProps}>
       {children}
     </div>
   );

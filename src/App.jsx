@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { Section, Sidebar, Main, Paper, TutorsList } from './components';
+import { Sidebar, Main, TutorsList, UniversityCard } from './components';
 import universityData from './constants/universityData.json';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
+      <div className='app'>
         <Sidebar />
         <Main>
-          <Paper>
-            <p>text</p>
-          </Paper>
+          <UniversityCard universityName={universityData.name} />
           <TutorsList tutors={universityData.tutors} />
         </Main>
       </div>

@@ -25,7 +25,7 @@ function TutorItem({
   options,
 }) {
   return (
-    <Paper className={s.tutor} style={{ display: 'flex' }}>
+    <Paper className={s.tutor}>
       <div className={s.tutorCol}>
         <span>{firstName}</span>
         <span>{lastName}</span>
@@ -49,6 +49,28 @@ function TutorItem({
       </div>
     </Paper>
   );
+}
+
+TutorsList.propTypes = {
+  tutors: PropTypes.arrayOf(PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    patronymic: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    options: PropTypes.string.isRequired,
+  }))
+}
+
+TutorItem.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  patronymic: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  options: PropTypes.string.isRequired,
 }
 
 export default TutorsList;
