@@ -1,0 +1,25 @@
+.tutorCol {
+  display: flex;
+  flex-direction: column;
+  min-width: 172px;
+  padding: 0 10px;
+}
+
+.tutorCol:first-child {
+  padding-left: 0;
+}
+.tutorCol:last-child {
+  padding-right: 0;
+  max-width: 531px;
+}
+
+.tutorCol > span {
+  display: flex;
+  /* width: 100%; */
+  margin-bottom: 2px;
+  gap: 10px;
+}
+
+.tutor {
+  display: flex;
+}

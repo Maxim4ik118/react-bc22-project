@@ -1,0 +1,19 @@
+.nav {
+  margin-bottom: auto;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* .navList {
+  
+  }
+  
+  .navItem {
+  
+  } */
+
+.navLink {
+  padding: 12px 25px;
+  display: flex;
+  column-gap: 24px;
+}
