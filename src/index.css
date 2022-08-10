@@ -6,6 +6,7 @@
   --gray: #424242;
   --white: #ffffff;
   --fontMonserrat: "Montserrat", sans-serif;
+  --logo-color: #161D2A;
 }
 
 body {
@@ -19,7 +20,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+p,h1,h2,h3,h4,h5,h6  {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
 .app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
   width: 100%;
+  min-height: 100vh;
+  max-width: 1440px;
   margin: 0 auto;
 }
