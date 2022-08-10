@@ -1,12 +1,11 @@
-@import-normalize; /* bring in normalize.css styles */
-
 :root {
   --primary: #ff6b0a;
+  --primaryBg: #dfdfdf;
   --black: #010101;
   --gray: #424242;
   --white: #ffffff;
-  --fontMonserrat: "Montserrat", sans-serif;
-  --logo-color: #161D2A;
+  --fontMonserrat: 'Montserrat', sans-serif;
+  --logo-color: #161d2a;
 }
 
 body {
@@ -17,7 +16,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 ul {
@@ -26,7 +26,13 @@ ul {
   margin: 0;
 }
 
-p,h1,h2,h3,h4,h5,h6  {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 

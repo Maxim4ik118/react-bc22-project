@@ -1,16 +1,19 @@
 import React from 'react';
 
-import {
-  Section, Sidebar
-} from './components';
-
+import { Section, Sidebar, Main, Paper, TutorsList } from './components';
+import universityData from './constants/universityData.json';
 
 class App extends React.Component {
   render() {
     return (
-      <div className='app'>
+      <div className="app">
         <Sidebar />
-        <main></main>
+        <Main>
+          <Paper>
+            <p>text</p>
+          </Paper>
+          <TutorsList tutors={universityData.tutors} />
+        </Main>
       </div>
     );
   }
