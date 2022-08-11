@@ -1,13 +1,21 @@
 import React from 'react';
+import cn from 'classnames';
 
 import PropTypes from 'prop-types';
 
 import { StyledSection } from './Styled';
 
-function Section({ title, children }) {
+function Section({ title, img, position = null, children }) {
   return (
     <StyledSection>
-      <h2 className="section-title">{title}</h2>
+      <h2
+        className={cn('section-title', {
+          'section--right': position !== null,
+        })}
+      >
+        {img && <img src={img} alt={title} />}
+        {title}
+      </h2>
       <div className="section-content">{children}</div>
     </StyledSection>
   );
