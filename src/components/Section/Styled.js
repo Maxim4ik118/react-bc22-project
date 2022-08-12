@@ -16,6 +16,7 @@ export const StyledSection = styled.section`
   }
 
   .section-content {
+    margin-bottom: 32px;
   }
 
   .section--right {

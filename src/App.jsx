@@ -7,11 +7,24 @@ import {
   UniversityCard,
   Paper,
   Section,
+  Button,
+  GeneralCardList,
 } from './components';
 import universityData from './constants/universityData.json';
 import teacherImp from './assets/images/teachers.png';
+import citiesImg from './assets/images/cities.png';
+import facultiesImg from './assets/images/faculties.png';
 
 class App extends React.Component {
+  state = {
+    cities: universityData?.cities.map(city => ({ text: city })) ?? [],
+    departments:
+      universityData?.department.map(({ name }) => ({ text: name })) ?? [],
+    tutors: universityData?.tutors ?? [],
+  };
+
+  openDropMenu = () => {};
+
   render() {
     return (
       <div className="app">
@@ -38,6 +51,23 @@ class App extends React.Component {
 
           <Section title="Преподаватели" img={teacherImp}>
             <TutorsList tutors={universityData.tutors} />
+            <Button name="Добавить преподавателя" onClick={() => {}} />
+          </Section>
+
+          <Section title="Города" img={citiesImg}>
+            <GeneralCardList
+              list={this.state.cities}
+              openDropMenu={this.openDropMenu}
+            />
+            <Button name="Добавить город" onClick={() => {}} />
+          </Section>
+
+          <Section title="факультеты" img={facultiesImg}>
+            <GeneralCardList
+              list={this.state.departments}
+              openDropMenu={this.openDropMenu}
+            />
+            <Button name="Добавить факультет" onClick={() => {}} />
           </Section>
         </Main>
       </div>

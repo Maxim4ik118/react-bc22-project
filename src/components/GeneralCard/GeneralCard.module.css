@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  padding: 19px 12px 19px 24px;
+  align-items: center;
+
+  width: 370px;
+  min-height: 62px;
+}
+
+.text {
+  padding-right: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+
+  color: #424242;
+}
+
+.btn_drop {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
