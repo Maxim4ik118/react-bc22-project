@@ -9,7 +9,8 @@ import {
   Section,
   Button,
   GeneralCardList,
-  FormTeacher,
+  TeacherForm,
+  WidgetForm,
 } from './components';
 import universityData from './constants/universityData.json';
 import teacherImp from './assets/images/teachers.png';
@@ -25,6 +26,30 @@ class App extends React.Component {
   };
 
   openDropMenu = () => {};
+
+  addTeacher = teacher => {
+    this.setState(prevState => ({
+      tutors: [...prevState.tutors, teacher],
+    }));
+  };
+
+  addCity = cityName => {
+    const newCity = {
+      text: cityName,
+    };
+    this.setState(prevState => ({
+      cities: [...prevState.cities, newCity],
+    }));
+  };
+
+  addDepartment = departmentName => {
+    const newDepartment = {
+      text: departmentName,
+    };
+    this.setState(prevState => ({
+      departments: [...prevState.departments, newDepartment],
+    }));
+  };
 
   render() {
     return (
@@ -51,8 +76,8 @@ class App extends React.Component {
           </Section>
 
           <Section title="Преподаватели" img={teacherImp}>
-            <TutorsList tutors={universityData.tutors} />
-            <FormTeacher />
+            <TutorsList tutors={this.state.tutors} />
+            <TeacherForm onSubmit={this.addTeacher} />
             <Button name="Добавить преподавателя" onClick={() => {}} />
           </Section>
 
@@ -61,6 +86,11 @@ class App extends React.Component {
               list={this.state.cities}
               openDropMenu={this.openDropMenu}
             />
+            <WidgetForm
+              title="Добавление города"
+              label="Город*"
+              onSubmit={this.addCity}
+            />
             <Button name="Добавить город" onClick={() => {}} />
           </Section>
 
@@ -68,6 +98,11 @@ class App extends React.Component {
             <GeneralCardList
               list={this.state.departments}
               openDropMenu={this.openDropMenu}
+            />
+            <WidgetForm
+              title="Добавление филиала"
+              label="Филиал*"
+              onSubmit={this.addDepartment}
             />
             <Button name="Добавить факультет" onClick={() => {}} />
           </Section>

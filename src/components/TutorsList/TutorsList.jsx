@@ -52,16 +52,18 @@ function TutorItem({
 }
 
 TutorsList.propTypes = {
-  tutors: PropTypes.arrayOf(PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    patronymic: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    options: PropTypes.string.isRequired,
-  }))
-}
+  tutors: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      patronymic: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      options: PropTypes.string,
+    })
+  ),
+};
 
 TutorItem.propTypes = {
   firstName: PropTypes.string.isRequired,
@@ -70,7 +72,7 @@ TutorItem.propTypes = {
   phone: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  options: PropTypes.string.isRequired,
-}
+  options: PropTypes.string,
+};
 
 export default TutorsList;
