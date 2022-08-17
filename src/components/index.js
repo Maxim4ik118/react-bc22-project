@@ -8,3 +8,4 @@ export { default as UniversityCard } from './UniversityCard/UniversityCard';
 export { default as Button } from './Button/Button';
 export { default as GeneralCard } from './GeneralCard/GeneralCard';
 export { default as GeneralCardList } from './GeneralCardList/GeneralCardList';
+export { default as FormTeacher } from './FormTeacher/FormTeacher';

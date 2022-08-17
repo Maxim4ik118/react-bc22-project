@@ -4,9 +4,14 @@ import PropTypes from 'prop-types';
 import s from './Button.module.css';
 import btnIcon from '../../assets/images/add.svg';
 
-export default function Button({ name, onClick, className }) {
+export default function Button({ name, onClick, className, ...restProps }) {
   return (
-    <button type="button" className={cn(s.button, className)} onClick={onClick}>
+    <button
+      type="button"
+      className={cn(s.button, className)}
+      onClick={onClick}
+      {...restProps}
+    >
       <img src={btnIcon} alt="btnIcon" />
       {name}
     </button>

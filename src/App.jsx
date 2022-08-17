@@ -9,6 +9,7 @@ import {
   Section,
   Button,
   GeneralCardList,
+  FormTeacher,
 } from './components';
 import universityData from './constants/universityData.json';
 import teacherImp from './assets/images/teachers.png';
@@ -51,6 +52,7 @@ class App extends React.Component {
 
           <Section title="Преподаватели" img={teacherImp}>
             <TutorsList tutors={universityData.tutors} />
+            <FormTeacher />
             <Button name="Добавить преподавателя" onClick={() => {}} />
           </Section>
 
