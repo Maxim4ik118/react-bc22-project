@@ -19,7 +19,13 @@ class WidgetForm extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.onSubmit(this.state.name);
+
+    this.reset();
   };
+
+  reset() {
+    this.setState({ name: '' });
+  }
   render() {
     const isEnabledButton = this.checkSubmitAbility(this.state);
     const { title = '', label = '' } = this.props;

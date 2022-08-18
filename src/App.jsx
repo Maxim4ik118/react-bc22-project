@@ -12,6 +12,7 @@ import {
   TeacherForm,
   WidgetForm,
 } from './components';
+import * as Forms from './constants/vars';
 import universityData from './constants/universityData.json';
 import teacherImp from './assets/images/teachers.png';
 import citiesImg from './assets/images/cities.png';
@@ -19,10 +20,18 @@ import facultiesImg from './assets/images/faculties.png';
 
 class App extends React.Component {
   state = {
-    cities: universityData?.cities.map(city => ({ text: city })) ?? [],
+    cities:
+      universityData?.cities.map(city => ({
+        text: city,
+        relation: 'cities',
+      })) ?? [],
     departments:
-      universityData?.department.map(({ name }) => ({ text: name })) ?? [],
+      universityData?.department.map(({ name }) => ({
+        text: name,
+        relation: 'departments',
+      })) ?? [],
     tutors: universityData?.tutors ?? [],
+    showForm: null,
   };
 
   openDropMenu = () => {};
@@ -37,19 +46,51 @@ class App extends React.Component {
     const newCity = {
       text: cityName,
     };
-    this.setState(prevState => ({
-      cities: [...prevState.cities, newCity],
-    }));
+
+    if (
+      !this.state.cities.some(
+        city => city.text.toLowerCase() === newCity.text.toLowerCase()
+      )
+    ) {
+      this.setState(prevState => ({
+        cities: [...prevState.cities, newCity],
+      }));
+    } else {
+      alert(`${newCity.text} is already exist`);
+    }
   };
 
   addDepartment = departmentName => {
     const newDepartment = {
       text: departmentName,
     };
+    if (
+      !this.state.departments.some(
+        department =>
+          department.text.toLowerCase() === newDepartment.text.toLowerCase()
+      )
+    ) {
+      this.setState(prevState => ({
+        departments: [...prevState.departments, newDepartment],
+      }));
+    } else {
+      alert(`${newDepartment.text} is already exist`);
+    }
+  };
+
+  handleShowForm = formName => {
     this.setState(prevState => ({
-      departments: [...prevState.departments, newDepartment],
+      showForm: prevState.showForm === formName ? null : formName,
     }));
   };
+
+  handleDeleteCard = (id, relation) => {
+    this.setState(prevState => ({
+      [relation]: prevState[relation].filter(el => el.text !== id),
+    }));
+  };
+
+  handleEditCard = () => {};
 
   render() {
     return (
@@ -77,34 +118,64 @@ class App extends React.Component {
 
           <Section title="Преподаватели" img={teacherImp}>
             <TutorsList tutors={this.state.tutors} />
-            <TeacherForm onSubmit={this.addTeacher} />
-            <Button name="Добавить преподавателя" onClick={() => {}} />
+            {this.state.showForm === Forms.TEACHER_FORM && (
+              <TeacherForm onSubmit={this.addTeacher} />
+            )}
+            <Button
+              name={
+                this.state.showForm === Forms.TEACHER_FORM
+                  ? 'Закрыть форму'
+                  : 'Добавить преподавателя'
+              }
+              onClick={() => this.handleShowForm(Forms.TEACHER_FORM)}
+            />
           </Section>
 
           <Section title="Города" img={citiesImg}>
             <GeneralCardList
+              onDeleteCard={this.handleDeleteCard}
+              onEditCard={this.handleEditCard}
               list={this.state.cities}
               openDropMenu={this.openDropMenu}
             />
-            <WidgetForm
-              title="Добавление города"
-              label="Город*"
-              onSubmit={this.addCity}
+            {this.state.showForm === Forms.CITY_FORM && (
+              <WidgetForm
+                title="Добавление города"
+                label="Город*"
+                onSubmit={this.addCity}
+              />
+            )}
+            <Button
+              name={
+                this.state.showForm === Forms.CITY_FORM
+                  ? 'Закрыть форму'
+                  : 'Добавить город'
+              }
+              onClick={() => this.handleShowForm(Forms.CITY_FORM)}
             />
-            <Button name="Добавить город" onClick={() => {}} />
           </Section>
 
           <Section title="факультеты" img={facultiesImg}>
             <GeneralCardList
+              onDeleteCard={this.handleDeleteCard}
+              onEditCard={this.handleEditCard}
               list={this.state.departments}
-              openDropMenu={this.openDropMenu}
             />
-            <WidgetForm
-              title="Добавление филиала"
-              label="Филиал*"
-              onSubmit={this.addDepartment}
+            {this.state.showForm === Forms.DEPARTMENTS_FORM && (
+              <WidgetForm
+                title="Добавление филиала"
+                label="Филиал*"
+                onSubmit={this.addDepartment}
+              />
+            )}
+            <Button
+              name={
+                this.state.showForm === Forms.DEPARTMENTS_FORM
+                  ? 'Закрыть форму'
+                  : 'Добавить факультет'
+              }
+              onClick={() => this.handleShowForm(Forms.DEPARTMENTS_FORM)}
             />
-            <Button name="Добавить факультет" onClick={() => {}} />
           </Section>
         </Main>
       </div>
