@@ -6,19 +6,19 @@ function Menu() {
   return (
     <nav className={s.nav}>
       <ul className={s.navList}>
-        {menuConfig.map(({ img, to, name }) => {
-          return <MenuItem key={name} img={img} to={to} name={name} />;
+        {menuConfig.map(({ Icon, to, name }) => {
+          return <MenuItem key={name} Icon={Icon} to={to} name={name} />;
         })}
       </ul>
     </nav>
   );
 }
 
-function MenuItem({ img, to = '/', name }) {
+function MenuItem({ Icon, to = '/', name }) {
   return (
     <li className={s.navItem}>
       <a href={to} className={s.navLink}>
-        <img src={img} />
+        <Icon />
         {name}
       </a>
     </li>
@@ -26,7 +26,7 @@ function MenuItem({ img, to = '/', name }) {
 }
 
 MenuItem.propTypes = {
-  img: PropTypes.string.isRequired,
+  Icon: PropTypes.any.isRequired,
   to: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

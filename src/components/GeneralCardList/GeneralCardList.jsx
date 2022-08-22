@@ -1,35 +1,22 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { GeneralCard } from 'components';
-
 import s from './GeneralCardList.module.css';
 
-class GeneralCardList extends Component {
-  constructor(props) {
-    super(props);
+const GeneralCardList = ({ list = [] }) => {
 
-    this.state = { ...this.props };
-  }
-
-  // ({ list = [], openDropMenu })
-  render() {
-    console.log(this.state);
-    return (
-      <div className={s.generalCardWrapper}>
-        {this.props.list.length > 0 &&
-          this.props.list.map(({ text }) => {
-            return (
-              <GeneralCard
-                key={text}
-                text={text}
-                openDropMenu={this.props.openDropMenu}
-              />
-            );
-          })}
-      </div>
-    );
-  }
+  return (
+    <div className={s.generalCardWrapper}>
+      {list.length > 0 &&
+        list.map(({ text }) => {
+          return (
+            <GeneralCard
+              key={text}
+              text={text}
+            />
+          );
+        })}
+    </div>
+  );
 }
 
 GeneralCardList.propTypes = {
@@ -38,7 +25,6 @@ GeneralCardList.propTypes = {
       text: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  openDropMenu: PropTypes.func.isRequired,
 };
 
 export default GeneralCardList;
