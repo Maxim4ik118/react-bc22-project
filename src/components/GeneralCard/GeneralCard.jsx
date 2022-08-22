@@ -1,12 +1,14 @@
 // import cn from 'classnames';
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import { Paper } from 'components';
 import s from './GeneralCard.module.css';
 import dots from '../../assets/images/dots.svg';
 import { ReactComponent as EditSvg } from '../../assets/images/edit.svg';
 import { ReactComponent as RemoveSvg } from '../../assets/images/delete.svg';
+import { useCallback } from 'react';
 
 export default function GeneralCard({
   text,
@@ -16,18 +18,40 @@ export default function GeneralCard({
   relation,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleOpenMenu = () => {
-    setIsMenuOpen(prev => !prev);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev); // true => false
   };
+
+  const handleKeyDown = useCallback(e => {
+    // #fe32f2f3 -> #fe32f2f3 -> #fe32f2f3 -> #fe32f2f3
+    if (e.key === 'Escape') {
+      setIsMenuOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown, isMenuOpen]);
 
   return (
     <Paper className={s.container}>
       <p className={s.text}>{text}</p>
-      <button type="button" className={s.btn_drop} onClick={handleOpenMenu}>
+      <button
+        data-modal-btn
+        type="button"
+        className={s.btn_drop}
+        onClick={toggleMenu}
+      >
         <img src={dots} alt="dots-menu" className={s.btn_icon} />
       </button>
       {isMenuOpen && (
-        <div className={s.menuModal}>
+        <div className={s.menuModal} data-modal>
           <button
             type="button"
             className={s.menuModal_content}
