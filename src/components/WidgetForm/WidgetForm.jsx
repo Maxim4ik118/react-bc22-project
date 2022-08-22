@@ -1,11 +1,11 @@
 import React from 'react';
 import s from '../TeacherForm/TeacherForm.module.css';
 import { Button, Paper } from 'components';
-// ({ title = '', label = '' })
-class WidgetForm extends React.Component {
-  state = {
-    name: '',
-  };
+import { useState } from 'react';
+
+const WidgetForm = ({title = '', label = ''}) => {
+ 
+const [formData, setFormData ] = useState({name: '',})
 
   checkSubmitAbility = state => {
     // ['qw', "123", "12", "44", "", "6"] // false
