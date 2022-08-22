@@ -2,22 +2,25 @@ import PropTypes from 'prop-types';
 import { GeneralCard } from 'components';
 import s from './GeneralCardList.module.css';
 
-const GeneralCardList = ({ list = [] }) => {
-
+const GeneralCardList = ({ list = [], onEditCard, onDeleteCard }) => {
   return (
     <div className={s.generalCardWrapper}>
       {list.length > 0 &&
-        list.map(({ text }) => {
+        list.map(({ text, relation }) => {
           return (
             <GeneralCard
               key={text}
               text={text}
+              id={text}
+              relation={relation}
+              onEditCard={onEditCard}
+              onDeleteCard={onDeleteCard}
             />
           );
         })}
     </div>
   );
-}
+};
 
 GeneralCardList.propTypes = {
   list: PropTypes.arrayOf(
