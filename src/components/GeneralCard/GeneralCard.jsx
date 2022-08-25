@@ -14,6 +14,8 @@ export default function GeneralCard({
   text,
   id,
   onEditCard,
+  onOpenDetails,
+  withDetails = false,
   onDeleteCard,
   relation,
 }) {
@@ -52,13 +54,23 @@ export default function GeneralCard({
       </button>
       {isMenuOpen && (
         <div className={s.menuModal} data-modal>
-          <button
-            type="button"
-            className={s.menuModal_content}
-            onClick={() => onEditCard(id, relation)}
-          >
-            <EditSvg className={s.menuModal_icon} /> редактировать
-          </button>
+          {withDetails ? (
+            <button
+              type="button"
+              className={s.menuModal_content}
+              onClick={() => onOpenDetails(id)}
+            >
+              <EditSvg className={s.menuModal_icon} /> подробности
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={s.menuModal_content}
+              onClick={() => onEditCard(id, relation)}
+            >
+              <EditSvg className={s.menuModal_icon} /> редактировать
+            </button>
+          )}
           <button
             type="button"
             className={s.menuModal_content}

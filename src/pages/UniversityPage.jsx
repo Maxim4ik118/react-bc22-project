@@ -15,6 +15,7 @@ import universityData from '../constants/universityData.json';
 import teacherImp from '../assets/images/teachers.png';
 import citiesImg from '../assets/images/cities.png';
 import facultiesImg from '../assets/images/faculties.png';
+import { nanoid } from 'nanoid';
 
 function UniversityPage() {
   const [cities, setCities] = useState(
@@ -27,6 +28,7 @@ function UniversityPage() {
     universityData?.department.map(({ name }) => ({
       text: name,
       relation: Forms.DEPARTMENTS_FORM,
+      id: nanoid(),
     })) ?? []
   );
   const [tutors, setTutors] = useState(universityData?.tutors ?? []);

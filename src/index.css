@@ -75,3 +75,35 @@ button {
   align-items: center;
   letter-spacing: 0.5px;
 }
+
+.containerPage {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsTumb {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  background-color: #161d2a;
+}
+
+.buttonsTumb button {
+  width: 264px;
+  padding: 0, 10px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #757575;
+}
+
+.buttonsTumb button.active {
+  color: #ffffff;
+  transition: color 300ms ease;
+}

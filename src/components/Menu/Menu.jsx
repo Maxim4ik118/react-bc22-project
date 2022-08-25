@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import s from './Menu.module.css';
 import PropTypes from 'prop-types';
 import { menuConfig } from '../../constants/menuConfig';
@@ -17,10 +18,10 @@ function Menu() {
 function MenuItem({ Icon, to = '/', name }) {
   return (
     <li className={s.navItem}>
-      <a href={to} className={s.navLink}>
+      <NavLink to={to} className={s.navLink}>
         <Icon />
         {name}
-      </a>
+      </NavLink>
     </li>
   );
 }
